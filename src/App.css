@@ -1,0 +1,59 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+#app-title{
+  font-size:35px;
+  text-align:center;
+  padding:40px;
+  color:white;
+}
+
+.container{
+  padding:30px;
+}
+
+#user-input{
+  margin-bottom:32px;
+}
+
+#search-btn{
+  margin-top:10px;
+}
+
+#SN-data-table{
+  margin-top:10px;
+}
+div#error-table table tbody tr{
+  background:rgba(255,224,230, 0.75);
+  color:red;
+}
+div#error-table table tbody tr:hover{
+  background:rgb(255,236,217);
+  color:brown;
+}
+div#error-table{
+  margin-top:20px;
+}
+.action-btn{
+  margin-right:10px;
+}
+div#input-progress{
+  display:flex;
+  flex-direction: row;
+}
+div#snInput{
+  flex-grow: 10;
+  margin-right:30px;
+}
+div#progress{
+  flex-grow:1;
+  margin-right:30px;
+}
+
+div.app-header{
+  min-height:100px;
+  background-image: url('banner.jpg');
+  background-position: center left;
+}
