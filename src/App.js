@@ -1,11 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css';
 import { Input, Button,Typography, notification, Space, Progress, Tooltip } from 'antd';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import SNDataTable from './components/SNDataTable';
 import SNDataErrorTable from './components/SNDataErrorTable';
+<<<<<<< HEAD
 import { SearchOutlined ,FlagOutlined , CheckCircleOutlined} from '@ant-design/icons';
 
+=======
+import { SearchOutlined} from '@ant-design/icons';
+import CronTaskProgress from './components/CronTaskProgress';
+>>>>>>> bitbucket/main
 const { Paragraph, Text } = Typography;
 const axios = require('axios')
 const { TextArea } = Input;
@@ -16,7 +21,7 @@ function App() {
   const [resultData, setResultData] = useState([])
   const [resultDataError, setResultDataError] = useState([])
 
-
+  
   const inputOnChange = (e) =>{
     let value = e.target.value.split(/\r|\r\n|\n|;|,|[ ]/)
     value = value.filter(item=>item !== "").map(item=>item.toUpperCase())
@@ -52,7 +57,7 @@ function App() {
     //function getting the result
     const getResult = async (item) =>{
       const resultPromise = new Promise((resolve, reject) =>{
-        axios.get('http://apisn.ipsupply.net:2580/api/check-sn/'+item).then(response =>{
+        axios.get('http://localhost:3000/api/check-sn/'+item).then(response =>{
           resolve(response)
         }).catch(err=>resolve(err))
       })
@@ -117,6 +122,7 @@ function App() {
         <h1 id="app-title">SN CHECK APP</h1>
       </div>
       <div className="container">
+        <CronTaskProgress />
         <div id="user-input">
           <Space direction="horizontal">{input.length} Item(s)</Space>
           <div id="input-progress">
