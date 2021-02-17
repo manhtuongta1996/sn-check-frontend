@@ -103,6 +103,11 @@ export default function SNDataTable({SNdata}) {
     
     const hasSelected = selectedRowKeys.length > 0;
     const columns = [
+      {
+        title: 'Flag',
+        dataIndex: 'disabledLineFlagMsgs',
+        key:'disabledLineFlagMsgs',
+      },
         {
           title: 'Product SN',
           dataIndex: 'serialNumber',

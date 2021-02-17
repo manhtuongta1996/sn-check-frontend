@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import './App.css';
-import { Input, Button,Typography, notification, Space, Progress } from 'antd';
+import { Input, Button,Typography, notification, Space, Progress, Tooltip } from 'antd';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import SNDataTable from './components/SNDataTable';
 import SNDataErrorTable from './components/SNDataErrorTable';
-import { SearchOutlined} from '@ant-design/icons';
+import { SearchOutlined ,FlagOutlined , CheckCircleOutlined} from '@ant-design/icons';
 
 const { Paragraph, Text } = Typography;
 const axios = require('axios')
@@ -86,7 +86,7 @@ function App() {
       } else {
 
         //No error
-        const {serialNumber, serviceLevel} = result.data;
+        const {serialNumber, serviceLevel,disabledLineFlagMsgs} = result.data;
         const {name, description} = result.data.Product
         const objectData = {
           serialNumber:<Paragraph copyable={{ text: serialNumber+" - "+name }}>{serialNumber}</Paragraph>,
@@ -94,6 +94,7 @@ function App() {
           description,
           serviceLevel,
           snInnerText: serialNumber,
+          disabledLineFlagMsgs:disabledLineFlagMsgs?.length > 0 ?<Tooltip placement="topLeft" title={disabledLineFlagMsgs} arrowPointAtCenter><FlagOutlined style={{fontSize:'20px'}}  /></Tooltip> : <CheckCircleOutlined  style={{fontSize:'20px', color:"#52C41A"}} />,
           id: index
         }
         newResultData = [...newResultData,objectData]
