@@ -4,13 +4,8 @@ import { Input, Button,Typography, notification, Space, Progress, Tooltip } from
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import SNDataTable from './components/SNDataTable';
 import SNDataErrorTable from './components/SNDataErrorTable';
-<<<<<<< HEAD
 import { SearchOutlined ,FlagOutlined , CheckCircleOutlined} from '@ant-design/icons';
-
-=======
-import { SearchOutlined} from '@ant-design/icons';
 import CronTaskProgress from './components/CronTaskProgress';
->>>>>>> bitbucket/main
 const { Paragraph, Text } = Typography;
 const axios = require('axios')
 const { TextArea } = Input;
@@ -24,7 +19,7 @@ function App() {
   
   const inputOnChange = (e) =>{
     let value = e.target.value.split(/\r|\r\n|\n|;|,|[ ]/)
-    value = value.filter(item=>item !== "").map(item=>item.toUpperCase())
+    value = value.filter(item=>item !== "").map(item=>encodeURIComponent(item.toUpperCase()))
 
     //Get unique value if there is duplication
     const uniqValueOnly = [...new Set(value)]
@@ -57,7 +52,7 @@ function App() {
     //function getting the result
     const getResult = async (item) =>{
       const resultPromise = new Promise((resolve, reject) =>{
-        axios.get('http://localhost:3000/api/check-sn/'+item).then(response =>{
+        axios.get('http://apisn.ipsupply.net:2580/api/check-sn/'+item).then(response =>{
           resolve(response)
         }).catch(err=>resolve(err))
       })
