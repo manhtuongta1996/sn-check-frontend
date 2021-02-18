@@ -117,7 +117,6 @@ function App() {
         <h1 id="app-title">SN CHECK APP</h1>
       </div>
       <div className="container">
-        <CronTaskProgress />
         <div id="user-input">
           <Space direction="horizontal">{input.length} Item(s)</Space>
           <div id="input-progress">
